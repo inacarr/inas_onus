@@ -1,0 +1,95 @@
++ ssl_conf_path=/appsmith-stacks/data/certificate/conf
++ mkdir -pv /appsmith-stacks/data/certificate/conf
++ cat
++ cat
++ [[ -z 'self' * ]]
++ export 'APPSMITH_ALLOWED_FRAME_ANCESTORS='\''self'\'' *'
++ APPSMITH_ALLOWED_FRAME_ANCESTORS=''\''self'\'' *'
++ [[ -z false ]]
++ use_https=0
++ [[ -n '' ]]
++ /opt/appsmith/templates/nginx-app.conf.sh 0 ''
++ cp -r /opt/appsmith/editor/404-image.png /opt/appsmith/editor/404.css /opt/appsmith/editor/404.html /opt/appsmith/editor/asset-manifest.json /opt/appsmith/editor/asset-manifest.json.gz /opt/appsmith/editor/favicon-black.ico /opt/appsmith/editor/index.html /opt/appsmith/editor/index.html.gz /opt/appsmith/editor/libraries /opt/appsmith/editor/manifest.json /opt/appsmith/editor/page.min.js /opt/appsmith/editor/pageService.js /opt/appsmith/editor/pageService.js.LICENSE.txt /opt/appsmith/editor/pageService.js.br /opt/appsmith/editor/pageService.js.gz /opt/appsmith/editor/pageService.js.map /opt/appsmith/editor/pageService.js.map.gz /opt/appsmith/editor/privacy-policy.html /opt/appsmith/editor/static /opt/appsmith/editor/terms-and-conditions.html /opt/appsmith/editor/tinymce /tmp/appsmith/www
++ apply-env-vars /opt/appsmith/editor/index.html /tmp/appsmith/www/index.html
++ original=/opt/appsmith/editor/index.html
++ served=/tmp/appsmith/www/index.html
++ node -e '
+  const fs = require("fs")
+  const content = fs.readFileSync("/opt/appsmith/editor/index.html", "utf8").replace(
+    /\b__(APPSMITH_[A-Z0-9_]+)__\b/g,
+    (placeholder, name) => (process.env[name] || "")
+  )
+  fs.writeFileSync("/tmp/appsmith/www/index.html", content)
+  '
+++ dirname /tmp/appsmith/www/index.html
++ pushd /tmp/appsmith/www
+++ basename /tmp/appsmith/www/index.html
++ gzip --keep --force index.html
++ popd
++ exec nginx -g 'daemon off;error_log stderr info;'
+2023/12/07 00:13:01 [notice] 1721#1721: using the "epoll" event method
+2023/12/07 00:13:01 [notice] 1721#1721: nginx/1.18.0 (Ubuntu)
+2023/12/07 00:13:01 [notice] 1721#1721: OS: Linux 6.5.11-linuxkit
+2023/12/07 00:13:01 [notice] 1721#1721: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/07 00:13:01 [notice] 1721#1721: start worker processes
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1792
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1793
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1794
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1795
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1796
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1797
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1798
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1799
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1800
+2023/12/07 00:13:01 [notice] 1721#1721: start worker process 1801
+2023/12/07 05:47:01 [notice] 1721#1721: signal 3 (SIGQUIT) received from 1, shutting down
+2023/12/07 05:47:01 [notice] 1792#1792: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1792#1792: exiting
+2023/12/07 05:47:01 [notice] 1793#1793: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1795#1795: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1793#1793: exiting
+2023/12/07 05:47:01 [notice] 1795#1795: exiting
+2023/12/07 05:47:01 [notice] 1794#1794: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1797#1797: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1798#1798: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1799#1799: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1801#1801: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1800#1800: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1797#1797: exiting
+2023/12/07 05:47:01 [notice] 1796#1796: gracefully shutting down
+2023/12/07 05:47:01 [notice] 1794#1794: exiting
+2023/12/07 05:47:01 [notice] 1799#1799: exiting
+2023/12/07 05:47:01 [notice] 1800#1800: exiting
+2023/12/07 05:47:01 [notice] 1801#1801: exiting
+2023/12/07 05:47:01 [notice] 1798#1798: exiting
+2023/12/07 05:47:01 [notice] 1796#1796: exiting
+2023/12/07 05:47:01 [notice] 1797#1797: exit
+2023/12/07 05:47:01 [notice] 1721#1721: signal 17 (SIGCHLD) received from 1797
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1797 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: signal 29 (SIGIO) received
+2023/12/07 05:47:01 [notice] 1795#1795: exit
+2023/12/07 05:47:01 [notice] 1794#1794: exit
+2023/12/07 05:47:01 [notice] 1799#1799: exit
+2023/12/07 05:47:01 [notice] 1800#1800: exit
+2023/12/07 05:47:01 [notice] 1721#1721: signal 17 (SIGCHLD) received from 1799
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1794 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1795 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1799 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: signal 29 (SIGIO) received
+2023/12/07 05:47:01 [notice] 1721#1721: signal 17 (SIGCHLD) received from 1800
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1800 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: signal 29 (SIGIO) received
+2023/12/07 05:47:01 [notice] 1796#1796: exit
+2023/12/07 05:47:01 [notice] 1793#1793: exit
+2023/12/07 05:47:01 [notice] 1798#1798: exit
+2023/12/07 05:47:01 [notice] 1792#1792: exit
+2023/12/07 05:47:01 [notice] 1721#1721: signal 17 (SIGCHLD) received from 1796
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1792 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1793 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1796 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1798 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: signal 29 (SIGIO) received
+2023/12/07 05:47:01 [notice] 1801#1801: exit
+2023/12/07 05:47:01 [notice] 1721#1721: signal 17 (SIGCHLD) received from 1801
+2023/12/07 05:47:01 [notice] 1721#1721: worker process 1801 exited with code 0
+2023/12/07 05:47:01 [notice] 1721#1721: exit

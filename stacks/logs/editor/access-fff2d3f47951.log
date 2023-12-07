@@ -1,0 +1,5 @@
+Load environment configuration
+/tmp/appsmith/www /opt/appsmith
+/opt/appsmith
+127.0.0.1 - - [07/Dec/2023:06:44:35 +0000] "GET / HTTP/1.1" 200 6933 "-" "curl/7.68.0"
+127.0.0.1 - - [07/Dec/2023:06:44:50 +0000] "GET / HTTP/1.1" 200 6933 "-" "curl/7.68.0"
